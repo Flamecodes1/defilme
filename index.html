@@ -2,87 +2,136 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Geschützte Video-Seite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Video Library</title>
   <style>
+    /* Grundstil der Seite */
     body {
-      font-family: Arial, sans-serif;
-      background: #f0f0f0;
       margin: 0;
       padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background-color: #121212;
+      color: #fff;
     }
-    /* Login-Box-Stile */
-    #login {
-      background: #fff;
+    header {
+      background: #1c1c1c;
       padding: 20px;
-      margin-top: 50px;
-      border: 1px solid #ddd;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      font-size: 24px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 10px;
+    }
+    /* Grid-Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      text-decoration: none;
+      color: inherit;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .card img {
+      width: 100%;
+      display: block;
+    }
+    .card .title {
+      padding: 15px;
+      font-size: 18px;
+      text-align: center;
+    }
+    /* Passwort-Overlay */
+    #login-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    #login-box {
+      background: #222;
+      padding: 30px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    #login-box input {
+      padding: 10px;
+      width: 200px;
+      margin-bottom: 10px;
+      border: none;
       border-radius: 4px;
     }
-    #login input[type="password"] {
-      padding: 10px;
-      font-size: 16px;
-      width: 100%;
-      margin-bottom: 10px;
-      box-sizing: border-box;
-    }
-    #login button {
+    #login-box button {
       padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      background: #ff6600;
+      color: #fff;
       font-size: 16px;
       cursor: pointer;
-    }
-    /* Inhaltsbereich */
-    #content {
-      max-width: 800px;
-      width: 90%;
-      margin: 20px auto;
-      display: none;
-    }
-    video {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin-bottom: 20px;
     }
   </style>
 </head>
 <body>
-  <!-- Login-Bereich -->
-  <div id="login">
-    <h2>Passwort erforderlich</h2>
-    <input type="password" id="password" placeholder="Passwort eingeben">
-    <button onclick="checkPassword()">Einloggen</button>
+  <!-- Passwortabfrage-Overlay -->
+  <div id="login-overlay">
+    <div id="login-box">
+      <h2>Passwort erforderlich</h2>
+      <input type="password" id="password" placeholder="Passwort eingeben">
+      <br>
+      <button onclick="checkPassword()">Einloggen</button>
+    </div>
   </div>
 
-  <!-- Geschützter Inhaltsbereich -->
-  <div id="content">
-    <h1>Willkommen auf der Video-Seite</h1>
-    <p>Hier findest du deine Videos:</p>
-    <!-- Beispiel-Video (ersetze "LUCY Offizieller Trailer Deutsch German _ 2014 Scarlett Johansson _HD_.mp4" durch deinen Videopfad) -->
-    <video controls>
-      <source src="LUCY Offizieller Trailer Deutsch German _ 2014 Scarlett Johansson _HD_.mp4" type="video/mp4">
-      Dein Browser unterstützt das Video-Tag nicht.
-    </video>
-    <!-- Weitere Videos kannst du hier hinzufügen -->
+  <header>
+    Modern Video Library
+  </header>
+  <div class="container">
+    <div class="grid">
+      <!-- Beispiel-Karte 1 -->
+      <a class="card" href="video1.html">
+        <img src="preview1.jpg" alt="Vorschau Video 1">
+        <div class="title">Video 1 Titel</div>
+      </a>
+      <!-- Beispiel-Karte 2 -->
+      <a class="card" href="video2.html">
+        <img src="preview2.jpg" alt="Vorschau Video 2">
+        <div class="title">Video 2 Titel</div>
+      </a>
+      <!-- Weitere Karten können hier hinzugefügt werden -->
+    </div>
   </div>
 
   <script>
     function checkPassword() {
-      var passwordInput = document.getElementById("password").value;
-      // Überprüfe, ob das eingegebene Passwort korrekt ist
-      if (passwordInput === "12344 Test") {
-        // Bei korrektem Passwort: Login-Bereich ausblenden und Inhalt anzeigen
-        document.getElementById("login").style.display = "none";
-        document.getElementById("content").style.display = "block";
+      var pass = document.getElementById("password").value;
+      // Passwortprüfung: hier muss "12344" eingegeben werden
+      if (pass === "12344") {
+        document.getElementById("login-overlay").style.display = "none";
       } else {
-        // Falsches Passwort
-        alert("Falsches Passwort. Bitte versuche es erneut.");
+        alert("Falsches Passwort!");
       }
     }
   </script>
 </body>
 </html>
+
+
+
