@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Geschützte Video-Seite</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    /* Login-Box-Stile */
+    #login {
+      background: #fff;
+      padding: 20px;
+      margin-top: 50px;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 4px;
+    }
+    #login input[type="password"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+    #login button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    /* Inhaltsbereich */
+    #content {
+      max-width: 800px;
+      width: 90%;
+      margin: 20px auto;
+      display: none;
+    }
+    video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Login-Bereich -->
+  <div id="login">
+    <h2>Passwort erforderlich</h2>
+    <input type="password" id="password" placeholder="Passwort eingeben">
+    <button onclick="checkPassword()">Einloggen</button>
+  </div>
+
+  <!-- Geschützter Inhaltsbereich -->
+  <div id="content">
+    <h1>Willkommen auf der Video-Seite</h1>
+    <p>Hier findest du deine Videos:</p>
+    <!-- Beispiel-Video (ersetze "video1.mp4" durch deinen Videopfad) -->
+    <video controls>
+      <source src="video1.mp4" type="video/mp4">
+      Dein Browser unterstützt das Video-Tag nicht.
+    </video>
+    <!-- Weitere Videos kannst du hier hinzufügen -->
+  </div>
+
+  <script>
+    function checkPassword() {
+      var passwordInput = document.getElementById("password").value;
+      // Überprüfe, ob das eingegebene Passwort korrekt ist
+      if (passwordInput === "12344 Test") {
+        // Bei korrektem Passwort: Login-Bereich ausblenden und Inhalt anzeigen
+        document.getElementById("login").style.display = "none";
+        document.getElementById("content").style.display = "block";
+      } else {
+        // Falsches Passwort
+        alert("Falsches Passwort. Bitte versuche es erneut.");
+      }
+    }
+  </script>
+</body>
+</html>
