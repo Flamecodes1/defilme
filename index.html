@@ -91,26 +91,68 @@
     .arrow.right {
       right: 10px;
     }
-    /* Pfeile bei kleinen Bildschirmen ausblenden (optional) */
+    /* Pfeile bei kleinen Bildschirmen optional ausblenden */
     @media (max-width: 768px) {
       .arrow {
         display: none;
       }
     }
+    /* Passwort Overlay */
+    #login-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+    #login-box {
+      background: #222;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    #login-box input {
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+      margin-bottom: 10px;
+    }
+    #login-box button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #ff6600;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
+  <!-- Passwort-Overlay -->
+  <div id="login-overlay">
+    <div id="login-box">
+      <h2>Passwort erforderlich</h2>
+      <input type="password" id="password" placeholder="Passwort eingeben">
+      <br>
+      <button onclick="checkPassword()">Einloggen</button>
+    </div>
+  </div>
+
   <!-- Header mit fixiertem, großem Logo -->
   <header>
     <a class="logo-link" href="index.html">
-      <!-- Verwende hier dein eigenes Logo (Dateiname: d.png) -->
+      <!-- Verwende hier dein eigenes Logo; stelle sicher, dass "d.png" im richtigen Verzeichnis liegt -->
       <img class="logo" src="d.png" alt="Flames Movies Logo">
     </a>
   </header>
 
   <!-- Hauptinhalt -->
   <div class="main-content">
-    <!-- Hier kannst du optional einen Titel oder weitere Informationen einfügen -->
     <!-- Horizontale Scrollgalerie -->
     <div class="scroll-container">
       <!-- Linker Pfeil -->
@@ -133,7 +175,7 @@
           <img src="preview3.jpg" alt="Vorschau Video 3">
           <div class="title">Video 3 Titel</div>
         </a>
-        <!-- Weitere Kärtchen kannst du hier hinzufügen -->
+        <!-- Weitere Kärtchen können hier hinzugefügt werden -->
       </div>
       
       <!-- Rechter Pfeil -->
@@ -142,6 +184,7 @@
   </div>
 
   <script>
+    // Funktion für das Scrollen der Filmgalerie
     function scrollLeft() {
       var container = document.getElementById("cards");
       container.scrollBy({ left: -300, behavior: 'smooth' });
@@ -149,6 +192,15 @@
     function scrollRight() {
       var container = document.getElementById("cards");
       container.scrollBy({ left: 300, behavior: 'smooth' });
+    }
+    // Passwort-Überprüfung
+    function checkPassword() {
+      var input = document.getElementById("password").value;
+      if (input === "12344") {
+        document.getElementById("login-overlay").style.display = "none";
+      } else {
+        alert("Falsches Passwort");
+      }
     }
   </script>
 </body>
