@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video 1 Titel</title>
+  <style>
+    /* Grundlegende Seitenstile */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background-color: #121212;
+      color: #fff;
+    }
+    /* Fixierter, einklappbarer Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #1c1c1c;
+      height: 30px; /* Collapsed-Höhe */
+      overflow: hidden;
+      transition: height 0.3s ease;
+      z-index: 1000;
+    }
+    /* Bei Hover wird der Header erweitert */
+    header:hover {
+      height: 100px; /* Expanded-Höhe */
+    }
+    /* Wrapper für den Header-Inhalt */
+    .header-content {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    /* Beim Hover wird der Inhalt eingeblendet */
+    header:hover .header-content {
+      opacity: 1;
+    }
+    /* Zurück-Link, oben links positioniert */
+    .header-content a.back-link {
+      position: absolute;
+      left: 20px;
+      font-size: 16px;
+      color: #ff6600;
+      text-decoration: none;
+    }
+    /* Logo im Header */
+    .header-content a.logo-link img.logo {
+      height: 80px; /* Logo-Größe im expanded Header */
+      width: auto;
+    }
+    /* Inhaltsbereich: Abstand nach oben, damit der fixierte Header nicht überlappt */
+    .content {
+      margin-top: 120px; 
+      max-width: 1200px;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Videotitel über dem Video */
+    .video-title {
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    /* IFrame für den externen Video-Stream */
+    iframe {
+      width: 100%;
+      height: 500px; /* Passe die Höhe nach Bedarf an */
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Einklappbarer Header -->
+  <header>
+    <div class="header-content">
+      <a class="back-link" href="index.html">&larr; Zurück</a>
+      <a class="logo-link" href="index.html">
+        <!-- Verwende nun "d.png" für dein Logo -->
+        <img class="logo" src="wicked.png" alt="Mein Logo">
+      </a>
+    </div>
+  </header>
+  
+  <!-- Hauptinhalt -->
+  <div class="content">
+    <!-- Videotitel -->
+    <h1 class="video-title">Wicked Deutsch</h1>
+    <!-- Eingebettetes Video -->
+    <!-- Ersetze den src-Wert durch den tatsächlichen Link zu deinem Video -->
+    <iframe src="https://watch.gxplayer.xyz/watch?v=5EUJL3OR" allowfullscreen></iframe>
+  </div>
+</body>
+</html>
