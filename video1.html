@@ -3,55 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Film Titel</title>
+  <title>Video 1 - Flames Movies</title>
   <style>
+    /* Grundlegende Seitenstile */
     body {
       margin: 0;
       padding: 0;
       font-family: "Helvetica Neue", Arial, sans-serif;
       background-color: #121212;
       color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
+    /* Header-Stile */
     header {
       background: #1c1c1c;
-      width: 100%;
-      padding: 20px;
+      padding: 10px 20px;
       text-align: center;
-      font-size: 24px;
+      position: relative;
     }
+    header a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Logo im Header */
+    .logo {
+      height: 40px;
+    }
+    /* Zurück-Link, links im Header positioniert */
+    .back-link {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #ff6600;
+      font-size: 16px;
+      text-decoration: none;
+    }
+    /* Inhaltsbereich */
     .content {
       max-width: 1200px;
-      width: 90%;
       margin: 20px auto;
+      padding: 0 10px;
     }
-    /* IFrame für den externen Video-Stream */
+    /* IFrame für das eingebettete Video */
     iframe {
       width: 100%;
-      height: 500px; /* Passe die Höhe nach Bedarf an */
+      height: 500px; /* Passe die Höhe bei Bedarf an */
       border: none;
-    }
-    a.back-link {
-      color: #ff6600;
-      text-decoration: none;
-      margin-top: 20px;
-      display: inline-block;
     }
   </style>
 </head>
 <body>
+  <!-- Header mit Zurück-Link und klickbarem Logo -->
   <header>
-    Film Titel
+    <a class="back-link" href="index.html">&larr; Zurück</a>
+    <a href="index.html">
+      <!-- Inline-SVG-Logo -->
+      <svg class="logo" width="150" height="40" viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Farbverlauf von Orange zu Rot -->
+          <linearGradient id="flamesGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#FFA500"/>
+            <stop offset="100%" stop-color="#FF0000"/>
+          </linearGradient>
+        </defs>
+        <!-- Hintergrund des Logos -->
+        <rect width="300" height="80" fill="#333333"/>
+        <!-- Text "Flames Movies" zentriert im Logo -->
+        <text x="150" y="50" text-anchor="middle" dominant-baseline="middle"
+              font-family="Helvetica, Arial, sans-serif" font-size="32" fill="url(#flamesGradient)">
+          Flames Movies
+        </text>
+      </svg>
+    </a>
   </header>
+
+  <!-- Hauptinhalt: eingebettetes Video -->
   <div class="content">
-    <!-- Hier wird der externe Video-Link eingebettet -->
-    <!-- Ersetze https://example.com/your-video-link mit deinem tatsächlichen Video-Link -->
+    <!-- Ersetze den src-Link durch den tatsächlichen Video-Link -->
     <iframe src="https://watch.gxplayer.xyz/watch?v=EGVLHRJP" allowfullscreen></iframe>
-    
-    <!-- Link zurück zur Übersichtsseite -->
-    <a class="back-link" href="index.html">&larr; Zurück zur Übersicht</a>
   </div>
 </body>
 </html>
