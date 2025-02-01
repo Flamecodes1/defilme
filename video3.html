@@ -3,100 +3,179 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video 1 Titel</title>
+  <title>Wicked Deutsch – Flames Movies</title>
   <style>
-    /* Grundlegende Seitenstile */
+    /* Basis-Stile für alle Seiten */
     body {
       margin: 0;
       padding: 0;
       font-family: "Helvetica Neue", Arial, sans-serif;
       background-color: #121212;
       color: #fff;
+      line-height: 1.6;
     }
-    /* Fixierter, einklappbarer Header */
+    /* Fixierter Header */
     header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       background: #1c1c1c;
-      height: 30px; /* Collapsed-Höhe */
-      overflow: hidden;
-      transition: height 0.3s ease;
-      z-index: 1000;
-    }
-    /* Bei Hover wird der Header erweitert */
-    header:hover {
-      height: 100px; /* Expanded-Höhe */
-    }
-    /* Wrapper für den Header-Inhalt */
-    .header-content {
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      height: 100%;
+      padding: 10px 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
+      z-index: 1000;
     }
-    /* Beim Hover wird der Inhalt eingeblendet */
-    header:hover .header-content {
-      opacity: 1;
-    }
-    /* Zurück-Link, oben links positioniert */
-    .header-content a.back-link {
+    header a.back-link {
       position: absolute;
       left: 20px;
-      font-size: 16px;
       color: #ff6600;
       text-decoration: none;
+      font-size: 16px;
     }
-    /* Logo im Header */
-    .header-content a.logo-link img.logo {
-      height: 80px; /* Logo-Größe im expanded Header */
+    header a.logo-link img.logo {
+      height: 80px;  /* Großes Logo */
       width: auto;
     }
-    /* Inhaltsbereich: Abstand nach oben, damit der fixierte Header nicht überlappt */
+    /* Hauptinhalt – Abstand zum fixierten Header */
     .content {
-      margin-top: 120px; 
+      margin-top: 100px; /* Abstand, damit der Header nicht überlappt */
       max-width: 1200px;
-      width: 90%;
       margin-left: auto;
       margin-right: auto;
+      padding: 20px;
     }
-    /* Videotitel über dem Video */
+    /* Filmtitel */
     .video-title {
-      font-size: 28px;
+      font-size: 32px;
       text-align: center;
       margin-bottom: 20px;
     }
-    /* IFrame für den externen Video-Stream */
-    iframe {
+    /* Video-Container */
+    .video-container {
+      margin-bottom: 40px;
+    }
+    .video-container iframe {
       width: 100%;
-      height: 500px; /* Passe die Höhe nach Bedarf an */
+      height: 500px;
       border: none;
+    }
+    /* Inhaltsangabe */
+    .movie-description {
+      margin-bottom: 40px;
+    }
+    .movie-description h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .movie-description p {
+      font-size: 16px;
+      margin: 0;
+    }
+    /* Trailer-Link */
+    .trailer-link {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .trailer-link a {
+      display: inline-block;
+      background: #ff6600;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    /* Empfohlene Filme */
+    .recommended {
+      margin-bottom: 40px;
+    }
+    .recommended h2 {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .recommended-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .recommended-item {
+      width: 200px;
+      background: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    .recommended-item:hover {
+      transform: scale(1.05);
+    }
+    .recommended-item img {
+      width: 100%;
+      display: block;
+    }
+    .recommended-item .title {
+      padding: 10px;
+      font-size: 16px;
     }
   </style>
 </head>
 <body>
-  <!-- Einklappbarer Header -->
+  <!-- Header -->
   <header>
-    <div class="header-content">
-      <a class="back-link" href="index.html">&larr; Zurück</a>
-      <a class="logo-link" href="index.html">
-        <!-- Verwende nun "d.png" für dein Logo -->
-        <img class="logo" src="d.png" alt="Mein Logo">
-      </a>
-    </div>
+    <a class="back-link" href="index.html">&larr; Zurück</a>
+    <a class="logo-link" href="index.html">
+      <!-- Stelle sicher, dass "d.png" im richtigen Verzeichnis liegt -->
+      <img class="logo" src="d.png" alt="Flames Movies Logo">
+    </a>
   </header>
-  
+
   <!-- Hauptinhalt -->
   <div class="content">
-    <!-- Videotitel -->
+    <!-- Filmtitel -->
     <h1 class="video-title">Wicked Deutsch</h1>
-    <!-- Eingebettetes Video -->
-    <!-- Ersetze den src-Wert durch den tatsächlichen Link zu deinem Video -->
-    <iframe src="https://watch.gxplayer.xyz/watch?v=5EUJL3OR" allowfullscreen></iframe>
+    
+    <!-- Video-Container -->
+    <div class="video-container">
+      <!-- Ersetze den src-Link durch den tatsächlichen Stream-Link -->
+      <iframe src="https://watch.gxplayer.xyz/watch?v=5EUJL3OR" allowfullscreen></iframe>
+    </div>
+    
+    <!-- Inhaltsangabe -->
+    <div class="movie-description">
+      <h2>Inhaltsangabe</h2>
+      <p>
+        Erlebe die faszinierende Welt von Wicked in dieser deutschen Version – packend, musikalisch und visuell beeindruckend.
+      </p>
+    </div>
+    
+    <!-- Trailer-Link -->
+    <div class="trailer-link">
+      <a href="trailer3.html" target="_blank">Trailer ansehen</a>
+    </div>
+    
+    <!-- Empfohlene Filme -->
+    <div class="recommended">
+      <h2>Empfohlene Filme</h2>
+      <div class="recommended-items">
+        <!-- Empfehlung: Mufasa: Der König der Löwen -->
+        <a class="recommended-item" href="video1.html">
+          <img src="preview1.jpg" alt="Mufasa: Der König der Löwen">
+          <div class="title">Mufasa: Der König der Löwen</div>
+        </a>
+        <!-- Empfehlung: Vaiana 2 -->
+        <a class="recommended-item" href="video2.html">
+          <img src="preview2.jpg" alt="Vaiana 2">
+          <div class="title">Vaiana 2</div>
+        </a>
+      </div>
+    </div>
   </div>
 </body>
 </html>
