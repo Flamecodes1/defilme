@@ -23,9 +23,16 @@
       justify-content: center;
       position: relative;
     }
-    /* Logo */
+    /* Großes und breites Logo */
     header a.logo-link img.logo {
-      height: 40px; /* Passe die Höhe des Logos an, wie gewünscht */
+      /* Hier passen wir die Größe an. Beispiel: 200px Höhe */
+      height: 200px;    /* Erhöht die Höhe */
+      width: auto;      /* Behält das Seitenverhältnis bei */
+      /* Falls du auch eine bestimmte Breite setzen möchtest, kannst du z.B. folgendes nutzen:
+         width: 400px;
+         height: auto;
+         Beachte aber, dass du in diesem Fall möglicherweise das Seitenverhältnis verzerrst, falls die Originaldatei nicht passt.
+      */
     }
     /* Zurück-Link, oben links positioniert */
     header a.back-link {
@@ -57,7 +64,7 @@
     <a class="back-link" href="index.html">&larr; Zurück</a>
     <!-- Logo, das auch als Link zur Hauptseite dient -->
     <a class="logo-link" href="index.html">
-      <!-- Ersetze "d.png" durch den Pfad zu deinem eigenen Logo -->
+      <!-- Ersetze "c.png" durch den Pfad zu deinem eigenen Logo -->
       <img class="logo" src="d.png" alt="Mein Logo">
     </a>
   </header>
