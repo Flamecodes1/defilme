@@ -13,63 +13,88 @@
       background-color: #121212;
       color: #fff;
     }
-    /* Header-Stile */
+    /* Fixierter, einklappbarer Header */
     header {
-      background: #1c1c1c;
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      padding: 10px 20px;
+      background: #1c1c1c;
+      height: 30px; /* Collapsed-Höhe */
+      overflow: hidden;
+      transition: height 0.3s ease;
+      z-index: 1000;
+    }
+    /* Bei Hover wird der Header erweitert */
+    header:hover {
+      height: 100px; /* Expanded-Höhe */
+    }
+    /* Wrapper für den Header-Inhalt */
+    .header-content {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
     }
-    /* Großes und breites Logo */
-    header a.logo-link img.logo {
-      /* Hier passen wir die Größe an. Beispiel: 200px Höhe */
-      height: 200px;    /* Erhöht die Höhe */
-      width: auto;      /* Behält das Seitenverhältnis bei */
-      /* Falls du auch eine bestimmte Breite setzen möchtest, kannst du z.B. folgendes nutzen:
-         width: 400px;
-         height: auto;
-         Beachte aber, dass du in diesem Fall möglicherweise das Seitenverhältnis verzerrst, falls die Originaldatei nicht passt.
-      */
+    /* Beim Hover wird der Inhalt eingeblendet */
+    header:hover .header-content {
+      opacity: 1;
     }
     /* Zurück-Link, oben links positioniert */
-    header a.back-link {
+    .header-content a.back-link {
       position: absolute;
       left: 20px;
-      top: 50%;
-      transform: translateY(-50%);
+      font-size: 16px;
       color: #ff6600;
       text-decoration: none;
-      font-size: 16px;
     }
-    /* Inhaltsbereich */
+    /* Logo im Header */
+    .header-content a.logo-link img.logo {
+      height: 80px; /* Logo-Größe im expanded Header */
+      width: auto;
+    }
+    /* Inhaltsbereich: Abstand nach oben, damit der fixierte Header nicht überlappt */
     .content {
+      margin-top: 120px; 
       max-width: 1200px;
       width: 90%;
-      margin: 20px auto;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Videotitel über dem Video */
+    .video-title {
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 20px;
     }
     /* IFrame für den externen Video-Stream */
     iframe {
       width: 100%;
-      height: 500px; /* Höhe nach Bedarf anpassen */
+      height: 500px; /* Passe die Höhe nach Bedarf an */
       border: none;
     }
   </style>
 </head>
 <body>
+  <!-- Einklappbarer Header -->
   <header>
-    <!-- Link, um zurück zur Hauptseite zu gelangen -->
-    <a class="back-link" href="index.html">&larr; Zurück</a>
-    <!-- Logo, das auch als Link zur Hauptseite dient -->
-    <a class="logo-link" href="index.html">
-      <!-- Ersetze "c.png" durch den Pfad zu deinem eigenen Logo -->
-      <img class="logo" src="d.png" alt="Mein Logo">
-    </a>
+    <div class="header-content">
+      <a class="back-link" href="index.html">&larr; Zurück</a>
+      <a class="logo-link" href="index.html">
+        <!-- Verwende nun "d.png" für dein Logo -->
+        <img class="logo" src="d.png" alt="Mein Logo">
+      </a>
+    </div>
   </header>
+  
+  <!-- Hauptinhalt -->
   <div class="content">
-    <!-- IFrame, der einen externen Video-Link einbettet -->
+    <!-- Videotitel -->
+    <h1 class="video-title">Dein Film Titel Hier</h1>
+    <!-- Eingebettetes Video -->
     <!-- Ersetze den src-Wert durch den tatsächlichen Link zu deinem Video -->
     <iframe src="https://watch.gxplayer.xyz/watch?v=EGVLHRJP" allowfullscreen></iframe>
   </div>
