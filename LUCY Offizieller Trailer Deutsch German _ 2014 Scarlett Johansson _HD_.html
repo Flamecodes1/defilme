@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video 1 Titel</title>
+  <title>Film Titel</title>
   <style>
     body {
       margin: 0;
@@ -23,16 +23,15 @@
       font-size: 24px;
     }
     .content {
-      max-width: 800px;
+      max-width: 1200px;
       width: 90%;
       margin: 20px auto;
     }
-    video {
+    /* IFrame für den externen Video-Stream */
+    iframe {
       width: 100%;
-      height: auto;
-      border: 4px solid #333;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      height: 500px; /* Passe die Höhe nach Bedarf an */
+      border: none;
     }
     a.back-link {
       color: #ff6600;
@@ -44,13 +43,14 @@
 </head>
 <body>
   <header>
-    Video 1 Titel
+    Film Titel
   </header>
   <div class="content">
-    <video controls>
-      <source src="LUCY Offizieller Trailer Deutsch German _ 2014 Scarlett Johansson _HD_.mp4" type="video/mp4">
-      Dein Browser unterstützt dieses Video nicht.
-    </video>
+    <!-- Hier wird der externe Video-Link eingebettet -->
+    <!-- Ersetze https://example.com/your-video-link mit deinem tatsächlichen Video-Link -->
+    <iframe src="https://watch.gxplayer.xyz/watch?v=EGVLHRJP" allowfullscreen></iframe>
+    
+    <!-- Link zurück zur Übersichtsseite -->
     <a class="back-link" href="index.html">&larr; Zurück zur Übersicht</a>
   </div>
 </body>
