@@ -35,9 +35,15 @@
       padding-top: 100px;
       max-width: 1200px;
       margin: 0 auto;
-      position: relative;
+      padding: 20px;
     }
-    /* Container für horizontales Scrollen */
+    /* Bereich für IP-Info (wird von JavaScript befüllt) */
+    #ip-info {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+    /* Horizontale Scrollgalerie */
     .scroll-container {
       position: relative;
     }
@@ -55,7 +61,7 @@
       border-radius: 8px;
       text-decoration: none;
       color: inherit;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
       transition: transform 0.3s ease;
     }
     .card:hover {
@@ -72,7 +78,7 @@
       font-size: 18px;
       text-align: center;
     }
-    /* Pfeil-Schaltflächen */
+    /* Pfeil-Schaltflächen für horizontales Scrollen */
     .arrow {
       position: absolute;
       top: 50%;
@@ -91,7 +97,7 @@
     .arrow.right {
       right: 10px;
     }
-    /* Pfeile bei kleinen Bildschirmen optional ausblenden */
+    /* Pfeile bei kleineren Bildschirmen optional ausblenden */
     @media (max-width: 768px) {
       .arrow {
         display: none;
@@ -142,17 +148,21 @@
       <button onclick="checkPassword()">Einloggen</button>
     </div>
   </div>
-
+  
   <!-- Header mit fixiertem, großem Logo -->
   <header>
     <a class="logo-link" href="index.html">
-      <!-- Verwende hier dein eigenes Logo; stelle sicher, dass "d.png" im richtigen Verzeichnis liegt -->
       <img class="logo" src="d.png" alt="Flames Movies Logo">
     </a>
   </header>
-
+  
   <!-- Hauptinhalt -->
   <div class="main-content">
+    <h1>Flames Movies</h1>
+    
+    <!-- Anzeige der IP- und Standortdaten -->
+    <div id="ip-info">Lade Standortdaten...</div>
+    
     <!-- Horizontale Scrollgalerie -->
     <div class="scroll-container">
       <!-- Linker Pfeil -->
@@ -160,26 +170,24 @@
       
       <!-- Container mit den Film-Kärtchen -->
       <div class="cards" id="cards">
-        <!-- Beispiel-Kärtchen 1 -->
+        <!-- Kärtchen 1 -->
         <a class="card" href="video1.html">
-          <img src="Mufasa_ The Lion King.jpg" alt="Vorschau Video 1">
+          <img src="Mufasa_ The Lion King.jpg" alt="Mufasa: Der König der Löwen">
           <div class="title">Mufasa Der König der Löwen</div>
         </a>
-        <!-- Beispiel-Kärtchen 2 -->
+        <!-- Kärtchen 2 -->
         <a class="card" href="video2.html">
-          <img src="vaina.jpg" alt="Vorschau Video 2">
+          <img src="vaina.jpg" alt="Vaina 2">
           <div class="title">Vaina 2</div>
         </a>
-        <!-- Beispiel-Kärtchen 3 -->
+        <!-- Kärtchen 3 -->
         <a class="card" href="video3.html">
-          <img src="wicked.jpg" alt="Vorschau Video 3">
+          <img src="wicked.jpg" alt="Wicked">
           <div class="title">Wicked</div>
         </a>
-        <!-- Weitere Kärtchen können hier hinzugefügt werden -->
-         </a>
-        <!-- Beispiel-Kärtchen 4 -->
+        <!-- Kärtchen 4 -->
         <a class="card" href="video4.html">
-          <img src="wicked.jpg" alt="Vorschau Video 3">
+          <img src="wicked.jpg" alt="Wicked">
           <div class="title">Wicked</div>
         </a>
       </div>
@@ -188,17 +196,16 @@
       <button class="arrow right" onclick="scrollRight()">&#10095;</button>
     </div>
   </div>
-
+  
   <script>
-    // Funktion für das Scrollen der Filmgalerie
-    function scrollLeft() {
-      var container = document.getElementById("cards");
-      container.scrollBy({ left: -300, behavior: 'smooth' });
+    // Funktionen zum Scrollen der Galerie
+    function scrollLeft(){
+      document.getElementById("cards").scrollBy({ left: -300, behavior: "smooth" });
     }
-    function scrollRight() {
-      var container = document.getElementById("cards");
-      container.scrollBy({ left: 300, behavior: 'smooth' });
+    function scrollRight(){
+      document.getElementById("cards").scrollBy({ left: 300, behavior: "smooth" });
     }
+    
     // Passwort-Überprüfung
     function checkPassword() {
       var input = document.getElementById("password").value;
@@ -208,6 +215,24 @@
         alert("Falsches Passwort");
       }
     }
+    
+    // IP- und Standortdaten mittels ipinfo.io abrufen
+    const token = "2224ea328d77a9"; // Dein neuer Access Token
+    fetch(`https://ipinfo.io/json?token=${token}`)
+      .then(response => response.json())
+      .then(data => {
+        const ip = data.ip;
+        const city = data.city;
+        const region = data.region;
+        const country = data.country;
+        document.getElementById("ip-info").innerHTML =
+          "Ihre IP: " + ip + " | Standort: " + city + ", " + region + ", " + country;
+      })
+      .catch(error => {
+        console.error("Fehler beim Abrufen der Standortdaten:", error);
+        document.getElementById("ip-info").innerHTML =
+          "Standortdaten konnten nicht abgerufen werden.";
+      });
   </script>
 </body>
 </html>
